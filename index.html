@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+</head>
+
+<style>
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: monospace;
+}
+html{
+    scroll-behavior: smooth;
+}
+body{
+    margin: 0;
+    padding: 0;
+    color: #1f71a1;
+    height: 100vh;
+}
+
+.animated-text{
+    padding-top: 50px;
+    font-size: 34px;
+    font-weight: 600;
+    min-width: 280px;
+}
+.animated-text span{
+    position: relative;
+}
+.animated-text span::before{
+    content: "Roy.";
+    color: #1f71a1;
+    animation: words 20s infinite;
+}
+.animated-text span::after{
+    content: "";
+    position: absolute;
+    width: calc(100% + 8px);
+    height: 100%;
+    background-color: #a4cce7;
+    border-left: 2px solid #1f71a1;
+    right: -5px;
+    animation: cursor .8s infinite, typing 20s steps(14) infinite;
+}
+@keyframes cursor {
+    to{
+        border-left: 2px solid #a4cce7;
+    }
+}
+@keyframes words {
+    0%,20%{
+        content: "Roy.";
+    }
+    21%,40%{
+        content: "Developer.";
+    }
+    41%,60%{
+        content: "Gamer.";
+    }
+    61%,80%{
+        content: "Designer.";
+    }
+    81%,100%{
+        content: "Guitarist";
+    }
+}
+@keyframes typing {
+    10%,15%,30%,35%,50%,55%,70%,75%,90%,95%{
+        width: 0;
+    }
+    5%,20%,25%,40%,45%,60%,65%,80%,85%{
+        width: calc(100% + 8px);
+    }
+}
+section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 50px;
+    background-color: #a4cce7;
+}
+
+/* STYLE FOR NAV BAR MENU */
+nav{
+    position: fixed;
+    z-index: 100;
+    top: 10px;
+    right: 20px;
+    left: 20px;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+} 
+nav .logo{
+    color: #1f71a1;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 2em;
+}
+nav ul{
+    display: flex;
+}
+nav ul li{
+    list-style: none;
+    margin: 0 10px;
+}
+nav ul li a{
+    text-decoration: none;
+    color: #1f71a1;
+    font-weight: bold;
+    font-size: 1.5em;
+    padding: 8px 15px;
+    border-radius: 25px;
+}
+nav ul li a:hover{
+    background-color: aliceblue;
+    box-shadow: 0 15px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* STYLE FOR HEADER AND TAGLINE */
+.content{   
+    transform: translateX(-50px);
+    width: 44%;
+    height: 250px;
+    box-shadow: 10px 15px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    border: 3px solid rgba(255, 255, 255, 0.5);
+    border-left: 3px solid rgba(255, 255, 255, 0.5);
+    padding: 40px;
+    padding-left: 50px;
+}
+.content h2{
+    padding-bottom: 10px;
+    font-size: 3em;
+    color: #1f71a1;
+}
+.content p{
+    font-size: 1.2em;
+    color: #1f71a1;
+}
+.content a:hover{
+    background-color: rgb(54, 224, 54);
+    color: white;
+}
+.tagline{
+    padding-top: 20px;
+}
+
+/* STYLE FOR PROFILE PHOTO AND ANIMATION */
+.imgBox img{
+    margin-left: 100px;
+    margin-bottom: 50px;
+    width: 400px;
+    border-radius: 50%;
+    animation: animate 5s linear infinite;
+}
+@keyframes animate{
+    0%, 100%{
+        transform: translateY(50px);
+    }
+    50%{
+        transform: translateY(100px);
+    }
+}
+
+/* STYLE FOR SOCIAL MEDIA ICON */
+.icon{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    bottom:80px;
+    left: 110px;
+}
+.icon li{
+    list-style: none;
+}
+.icon li a{
+    text-decoration: none;
+    width: 70px;
+    height: 70px;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin: 10px;
+    box-shadow: 0 5px 10px rgba(255, 255, 255, 0.3);
+}
+
+.icon li a img{
+    width:70px;
+    height: 70px;
+    transform: scale(0.7);
+    transition: 0.5s;
+}
+.icon li:hover a img{
+    transform: scale(0.7) rotate(300deg);
+}
+.downloadBTN{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 23px;
+    margin-right: 15px;
+    width: 150px;
+    height: 50px;
+    border-radius: 10px;
+    border: 2px solid #1f71a1;
+    background: transparent;
+    overflow: hidden;
+    z-index: 1;
+    font-size: large;
+    transition: color 0.4s ease;
+}
+.downloadBTN a, span{
+    color: white;
+    text-decoration: none;
+}
+.downloadBTN::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #3498db;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    transition: transform 0.4s ease;
+    transform: scaleX(0);
+    transform-origin: left;
+}
+.downloadBTN:hover::before{
+    transform: scaleX(1);
+    transform-origin: left;
+}
+.downloadBTN:hover{
+    color: #fff;
+    cursor: pointer;
+}
+.downloadBTN span{
+    font-weight: bold;
+}
+
+/* STYLE FOR ABOUT SECTION */
+.container-about{
+    width: 100%;
+    height: 78vh;
+    backdrop-filter: blur(15px);
+    border-radius: 50px;
+    transform: translateX(-120px);
+    transform: translateY(40px);
+    box-shadow: 10px 15px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 40px;
+    padding-left:50px;
+    padding-right: 50px;
+}
+.content-about h2{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding-bottom: 25px;
+    font-size: 3em;
+    color: #1f71a1;
+}
+.content-about p{
+    text-align: justify;
+    font-size: 1.5em;
+    color: #1f71a1;
+}
+.content-about img{
+    width: 350px;
+    height: 410px;
+    border-radius: 20px;
+    margin-top: 35px;
+    transition: transform 0.3s ease;
+    
+}
+.img:hover{
+    box-shadow: 10px 15px 10px rgba(0, 0, 0, 0.1);
+    transform: scale(1.05);
+    cursor: pointer;
+}
+.about{
+    position: absolute;
+    width: 50%;
+    bottom: 2.5em;
+    margin-left: 35em;
+    margin-bottom: 6em;
+}
+
+/* Enhanced Container Styling */
+.slider-container {
+    position: relative;
+    margin-left: 100px;
+    margin: auto;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+.project-content{
+    margin: 0;
+    padding-bottom: 10px;
+    padding-top: 0px;
+}
+.project-content h2{
+    text-align: center;
+    font-size: 3em;
+    color: #1f71a1;
+}
+.main-container{
+    width: 80%;
+    height: 540px;
+    border-radius: 50px;
+    transform: translateX(-120px);
+    transform: translateY(-20px);
+    box-shadow: 10px 15px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 10px;
+    margin-top: 67px;
+    padding-left:50px;
+    padding-right: 50px;
+}
+
+/* Enhanced Image Styling */
+.slider {
+    display: flex;
+    transition: transform 0.6s cubic-bezier(0.5, 0, 0.5, 1);
+}
+.slide {
+    min-width: 100%;
+    height: 450px;
+    box-sizing: border-box;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+.slide img {
+    width: 100%;
+    height: 450px;
+    border-radius: 15px;
+}
+
+/* Hide default radio buttons */
+input[type="radio"] {
+    display: none;
+}
+
+/* Slide Control with Radio Buttons */
+#slide1:checked ~ .slider { transform: translateX(0); }
+#slide2:checked ~ .slider { transform: translateX(-100%); }
+#slide3:checked ~ .slider { transform: translateX(-200%); }
+#slide4:checked ~ .slider { transform: translateX(-300%); }
+#slide5:checked ~ .slider { transform: translateX(-400%); }
+
+#slide1:checked ~ .slider .slide:nth-child(1),
+#slide2:checked ~ .slider .slide:nth-child(2),
+#slide3:checked ~ .slider .slide:nth-child(3),
+#slide4:checked ~ .slider .slide:nth-child(4),
+#slide5:checked ~ .slider .slide:nth-child(5) {
+    opacity: 1;
+}
+
+/* Navigation Dots Styling */
+.nav-label {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+}
+.nav-label label {
+    width: 15px;
+    height: 15px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+/* Change label color when checked */
+#slide1:checked ~ .nav-label label[for="slide1"] {
+    background-color: #ff6347; /* Tomato color */
+    transform: scale(1.2);
+}
+#slide2:checked ~ .nav-label label[for="slide2"] {
+    background-color: #4682b4; /* SteelBlue color */
+    transform: scale(1.2);
+}
+#slide3:checked ~ .nav-label label[for="slide3"] {
+    background-color: #32cd32; /* LimeGreen color */
+    transform: scale(1.2);
+}
+#slide4:checked ~ .nav-label label[for="slide4"] {
+    background-color: #ff4500; /* OrangeRed color */
+    transform: scale(1.2);
+}
+#slide5:checked ~ .nav-label label[for="slide5"] {
+    background-color: #9400d3; /* DarkViolet color */
+    transform: scale(1.2);
+}
+
+/* Navigation Buttons Styling */
+.nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(170, 160, 160, 0.6);
+    color: white;
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+    font-size: 24px;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+.nav-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Link navigation buttons with radio inputs */
+#slide1:checked ~ .prev-button label[for="slide5"],
+#slide2:checked ~ .prev-button label[for="slide1"],
+#slide3:checked ~ .prev-button label[for="slide2"],
+#slide4:checked ~ .prev-button label[for="slide3"],
+#slide5:checked ~ .prev-button label[for="slide4"] {
+    display: block;
+}
+
+#slide1:checked ~ .next-button label[for="slide2"],
+#slide2:checked ~ .next-button label[for="slide3"],
+#slide3:checked ~ .next-button label[for="slide4"],
+#slide4:checked ~ .next-button label[for="slide5"],
+#slide5:checked ~ .next-button label[for="slide1"] {
+    display: block;
+}
+
+/* Hide inactive navigation buttons */
+.prev-button label,
+.next-button label {
+    display: none;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 24px;
+}
+
+/* Specific positions for each button */
+.prev-button label {
+    left: 20px;
+}
+
+.next-button label {
+    right: 20px;
+}
+
+.portfolioImg img{
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    width: 100%;
+    height: 450px;
+}
+
+/* STYLE FOR BLOG SECTION */
+.container-blog{
+    width: 80%;
+    height: 75vh;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 50px;
+    transform: translateX(-120px);
+    transform: translateY(26px);
+    box-shadow: 10px 15px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 40px;
+    margin-top: 30px;
+    padding-left:50px;
+    padding-right: 50px;
+    overflow-y: scroll;
+}
+.content-blog h2{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding-bottom: 5px;
+    font-size: 3em;
+    color: #1f71a1;
+}
+.content-blog h3{
+    padding-bottom: 10px;
+    font-size: 2em;
+}
+.content-blog p{
+    text-align: justify;
+    font-size: 1.5em;
+    color: #1f71a1;
+}
+
+/* STYLE FOR FOOTER */
+footer{
+    text-align: center;
+    background-color: #a4cce7;
+    color: #1f71a1;
+    font-weight: bold;
+    font-style: italic;
+    padding-bottom: 10px;
+}
+
+::-webkit-scrollbar{
+    border-radius: 50px;
+    background-color: #a4cce7;
+}
+::-webkit-scrollbar-thumb{
+    background-color: #1f71a1;
+    border-radius: 50px;
+    cursor: pointer;
+}
+::-webkit-scrollbar-thumb:hover{
+    background-color: aliceblue;
+}
+</style>
+
+<body>
+    <section id="home">
+        <nav>
+            <a href="#" class="logo">Roy B. Nabesis</a>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#project">Project</a></li>
+                <li><a href="#blog">Blog</a></li>
+            </ul>
+        </nav>
+
+        <div class="content">
+            <div class="animated-text">
+               Hello, I'm <span></span>
+            </div>
+            <p class="tagline">"Aspiring web developer eager to learn and grow"</p>
+        </div>
+
+        <div class="imgBox">
+            <img src="ME.jpg"  alt="Profile Photo">
+        </div>
+
+        <div class="icon">
+            <button class="downloadBTN">
+                <a href="Roy B. Nabesis - CV.pdf" downLoad>Download <span>CV</span></a>
+            </button>
+
+            <li><a href="https://www.facebook.com/roy.juranes" target="_blank"><img src="img/Facebook.png" alt=""></a></li>
+            <li><a href="https://www.tiktok.com/@roydon0901?_t=8pw4ZRkG3sX&_r=1" target="_blank"><img src="img/TikTok.png" alt=""></a></li>
+            <li><a href="www.linkedin.com/roy-nabesis" target="_blank"><img src="img/LinkedIn.png" alt=""></a></li>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container-about">
+            <div class="content-about">
+                <img src="ME3.jpg" class="img" alt="About Photo">
+                <div class="about">
+                    <h2 >About Me</h2>
+                    <p>Hi, I'm Roy B. Nabesis, a third-year BSIS student with a strong interest in web development. I have learned how to use tools like HTML, CSS, and JavaScript. I also have experience with databases and system analysis from my studies.
+                    <br><br>
+                       I enjoy creating websites that are easy to use and look good on all devices. I am always looking to improve my skills and learn new things. I am excited to apply what I know in a job, helping to build websites that solve real problem and make life easier for users.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="project">
+        <div class="main-container">
+            <div class="project-content">
+                <h2>Image Mapping</h2>
+            </div>
+
+            
+            <div class="slider-container">
+                <!-- Radio buttons for navigation -->
+                <input type="radio" name="slider" id="slide1" checked>
+                <input type="radio" name="slider" id="slide2">
+                <input type="radio" name="slider" id="slide3">
+                <input type="radio" name="slider" id="slide4">
+                <input type="radio" name="slider" id="slide5">
+        
+                <!-- Image Slider -->
+                <div class="slider">
+                    <div class="slide"><a href="map/NabesisImageMap.html" alt="Image Mapping"><img src="img/projectImg/Map.png" alt="Slide 1"></a></div>
+                    <div class="slide"><a href="map/country/japan.html" alt="Image Mapping"><img src="img/projectImg/Map1.png" alt="Slide 2"></a></div>
+                    <div class="slide"><a href="map/country/saudiarabia.html" alt="Image Mapping"><img src="img/projectImg/Map2.png" alt="Slide 3"></a></div>
+                    <div class="slide"><a href="map/country/maldives.html" alt="Image Mapping"><img src="img/projectImg/Map3.png" alt="Slide 4"></a></div>
+                    <div class="slide"><a href="map/country/thailand.html" alt="Image Mapping"><img src="img/projectImg/Map4.png" alt="Slide 5"></a></div>
+                </div>
+        
+                <!-- Navigation Dots -->
+                <div class="nav-label">
+                    <label for="slide1"></label>
+                    <label for="slide2"></label>
+                    <label for="slide3"></label>
+                    <label for="slide4"></label>
+                    <label for="slide5"></label>
+                </div>
+        
+                <!-- Previous Button Labels -->
+                <div class="prev-button">
+                    <label for="slide5" class="nav-button prev">&#10094;</label>
+                    <label for="slide1" class="nav-button prev">&#10094;</label>
+                    <label for="slide2" class="nav-button prev">&#10094;</label>
+                    <label for="slide3" class="nav-button prev">&#10094;</label>
+                    <label for="slide4" class="nav-button prev">&#10094;</label>
+                </div>
+        
+                <!-- Next Button Labels -->
+                <div class="next-button">
+                    <label for="slide2" class="nav-button next">&#10095;</label>
+                    <label for="slide3" class="nav-button next">&#10095;</label>
+                    <label for="slide4" class="nav-button next">&#10095;</label>
+                    <label for="slide5" class="nav-button next">&#10095;</label>
+                    <label for="slide1" class="nav-button next">&#10095;</label>
+                </div>
+            </a>
+        </div>
+
+    </section>
+
+   <section id="project">
+        <div class="main-container">
+            <div class="project-content">
+                <h2>Personal Portfolio</h2>
+            </div>
+
+            <div class="portfolioImg">
+                <a href="/Portfolio/personal-portfolio/portfolio.html"><img src="/Portfolio/img/portfolio.png" class="pImg" alt="Activity 1: Personal Portfolio"></a>
+            </div>
+        </div>
+   </section> 
+
+    <section id="blog">
+        <div class="container-blog">
+            <div class="content-blog">
+                <h2>Blog</h2>
+                <h3>Course Reflection</h3>
+                <p>In this section, I'll share my experiences with the Innovation and New Technologies course I'm taking.
+                   I know a little bit about web development, so I do struggle sometime, but not too much. I'm excited to keep learning and get better as I go.
+                    <br><br>
+                    I will talk about what I'm learning in the course, the problems I face along the way, and how each lesson is helping me improve. 
+                    As I go through the course, I am learning new things like basic coding, bulding web pages, and understanding how website work. Each topic helps me understand
+                    web development better and builds on what I already know.
+                    <br><br>
+                    Sometimes, I struggle with tricky coding problems or find it hard to understand certain topics, but these challenges are important because they push me to find solutions
+                    and learn from my mistakes. Overcoming these problems helps me grow, step by step, and become better developer.
+                    <br><br>
+                    The course gives me the chance to practice what I learn, from writing simple code to designing web pages. with each new skill,
+                    feel more confident in my abilities and get more excited about what I can do in web development.
+                    <br><br>
+                    Join me as I share my progress and learn more about web development step by step.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Roy B. Nabesis. All rights reserved</p>
+    </footer>
+</body>
+</html>
